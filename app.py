@@ -1,9 +1,8 @@
 from flask import Flask
-import requests
+from helpers import get_pokemon_by_name
 
 
 app = Flask(__name__)
-
 
 @app.get("/")
 def pokemon_list():
