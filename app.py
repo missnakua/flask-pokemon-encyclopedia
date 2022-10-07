@@ -1,19 +1,19 @@
 from flask import Flask
-from helpers import get_pokemon_by_name
+from helpers import get_pokemon_by_name, get_random_pokemon_list
 
 
 app = Flask(__name__)
 
+
 @app.get("/")
 def pokemon_list():
-    return "Bulbasaur, charmander, pikachu, eevee, diglett"
+    return ', '.join([pokemon['name'] for pokemon in get_random_pokemon_list()]).title()
 
 
 @app.get("/<pokemon_name>")
 def pokemon_data(pokemon_name):
-    response = requests.get(f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}")
-    pokemon = response.json()
-    return f"This is {pokemon['name']}.\n" \
+    pokemon = get_pokemon_by_name(pokemon_name)
+    return f"This is {pokemon['name'].capitalize()}.\n" \
            f"Height: {pokemon['height']}.\n" \
            f"Weight: {pokemon['weight']}.\n" \
            f"Base experience: {pokemon['base_experience']}.\n" \
