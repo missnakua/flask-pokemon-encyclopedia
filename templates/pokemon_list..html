@@ -7,7 +7,7 @@
 <body>
   <p>Which pokemon would you like to know more about?</p>
   {% for pokemon in random_pokemon %}
-    <p>{{ pokemon['name'] }}</p>
+    <a href="/{{ pokemon['name'] }}">{{ pokemon['name'] }}</a>
   {% endfor %}
 </body>
 </html>

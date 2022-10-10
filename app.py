@@ -14,11 +14,7 @@ def pokemon_list():
 @app.get("/<pokemon_name>")
 def pokemon_data(pokemon_name):
     pokemon = get_pokemon_by_name(pokemon_name)
-    return f"This is {pokemon['name'].capitalize()}.\n" \
-           f"Height: {pokemon['height']}.\n" \
-           f"Weight: {pokemon['weight']}.\n" \
-           f"Base experience: {pokemon['base_experience']}.\n" \
-           f"Type(s): {' and '.join(type_info['type']['name'] for type_info in pokemon['types'])}"
+    return render_template("pokemon_data.html", pokemon=pokemon)
 
 
 if __name__ == "__main__":
