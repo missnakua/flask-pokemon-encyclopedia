@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List | Pokemon</title>
+</head>
+<body>
+  <p>Which pokemon would you like to know more about?</p>
+  {% for pokemon in random_pokemon %}
+    <p>{{ pokemon['name'] }}</p>
+  {% endfor %}
+</body>
+</html>
